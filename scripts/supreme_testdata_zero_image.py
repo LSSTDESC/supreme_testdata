@@ -25,6 +25,9 @@ if __name__ == '__main__':
         except:
             continue
 
+        if hdu.data is None:
+            continue
+
         if exttype == 'IMAGE':
             print('Overwriting image with value = %.5f' % (args.imagevalue))
             hdu.data[:] = args.imagevalue
