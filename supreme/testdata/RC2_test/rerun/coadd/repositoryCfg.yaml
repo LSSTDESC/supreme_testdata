@@ -1,0 +1,8 @@
+!RepositoryCfg_v1
+_mapper: !!python/name:lsst.obs.hsc.hscMapper.HscMapper ''
+_mapperArgs: {}
+_parents:
+- ../testing
+_policy: null
+_root: null
+dirty: true
