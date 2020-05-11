@@ -7,7 +7,7 @@ _parents:
   _mapperArgs: {}
   _parents: []
   _policy: null
-  _root: /nfs/slac/g/ki/ki19/des/erykoff/src/supreme_testdata/supreme/testdata/RC2_test
+  _root: ../../../RC2_test
   dirty: true
 _policy: null
 _root: null
