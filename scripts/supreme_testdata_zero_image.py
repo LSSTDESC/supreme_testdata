@@ -19,15 +19,21 @@ if __name__ == '__main__':
 
     data = fits.open(args.filename)
 
+    done_image = False
+    done_variance = False
     for hdu in data:
         try:
             exttype = hdu.header['EXTTYPE']
         except:
             continue
 
+        if hdu.data is None:
+            continue
+
         if exttype == 'IMAGE':
             print('Overwriting image with value = %.5f' % (args.imagevalue))
             hdu.data[:] = args.imagevalue
+            done_image = True
         elif exttype == 'VARIANCE':
             if args.variancevalue > 0.0:
                 print('Overwriting variance with value = %.5f' % (args.variancevalue))
@@ -36,5 +42,9 @@ if __name__ == '__main__':
                 var = np.median(hdu.data[:])
                 print('Overwriting variance with value = %.5f' % (var))
                 hdu.data[:] = var
+            done_variance = True
+
+        if done_image and done_variance:
+            break
 
     data.writeto(args.filename, overwrite=True)
